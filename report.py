@@ -5,7 +5,7 @@ def clean_nmap(output:str):
     list_output = output.split("\n")
     filter_output = []
     for line in list_output:
-        if "SF:" in line or "NEXT SERVICE" in line:
+        if "SF:" in line or "NEXT SERVICE" or "SF-" in line:
             pass
         else:
             filter_output.append(line)
