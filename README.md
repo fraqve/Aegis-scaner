@@ -25,7 +25,7 @@ Aegis-Scaner is a modular command-line security tool built for blue team workflo
 **Requirements**
 
 - Python 3.8+
-- Nmap installed on your system
+- Nmap, Nikto, Gobuster installed on your system
 - API keys for VirusTotal, AbuseIPDB, and Google Gemini
 
 **Steps**
@@ -39,9 +39,6 @@ cd Aegis-scaner
 pip install -r requirements.txt
 
 # Configure API keys edit config.json and add your API keys
-```
-
-> **Note:** `config.json` contains sensitive credentials and is excluded from version control via `.gitignore`. Never commit it.
 
 ---
 
