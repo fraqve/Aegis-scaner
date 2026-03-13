@@ -85,10 +85,15 @@ Aegis-scaner/
 ## Status
 
 Actively in development.
+
 Phase 1 (scanning and reporting) complete.
-Phase 2:
+
+Phase 2 (analysis) in progress:
+
   -Virus total api Done.
+  
   -Abused in progress.
+  
   -Gemini ai analysis in progress.
 
 ---
