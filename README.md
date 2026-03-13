@@ -55,11 +55,8 @@ cp config.json.example config.json
 # Basic scan
 python main.py --target 192.168.1.1
 
-# Scan with threat intelligence enrichment
-python main.py --target 192.168.1.1 --enrich
-
-# Save report to file
-python main.py --target 192.168.1.1 --enrich --output report.txt
+# Provide the wordlist for gobuster default is /usr/share/seclists/common.txt
+python main.py --target 192.168.1.1 --wordlist /path/to/wordlist
 ```
 
 ---
@@ -81,7 +78,7 @@ Aegis-scaner/
 ## Tech Stack
 
 - **Python 3** — Core language
-- **python-nmap** — Nmap wrapper
+- **subprocess (to use the tools)** — Nmap, Gobuster, Nikto
 - **requests** — API communication
 - **VirusTotal API** — File and IP reputation
 - **AbuseIPDB API** — IP abuse confidence scoring
