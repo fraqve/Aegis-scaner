@@ -40,9 +40,7 @@ cd Aegis-scaner
 # Install dependencies
 pip install -r requirements.txt
 
-# Configure API keys
-cp config.json.example config.json
-# Edit config.json and add your API keys
+# Configure API keys edit config.json and add your API keys
 ```
 
 > **Note:** `config.json` contains sensitive credentials and is excluded from version control via `.gitignore`. Never commit it.
