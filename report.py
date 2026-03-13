@@ -21,3 +21,23 @@ def gen_report(target:str,nmap_out:str,gobuster_out:str,nikto_out:str):
         file.write("=" * 60)
         file.write("\nNikto scan:\n")
         file.write(nikto_out)
+
+        # virus total scan
+        file.write("=" * 60)
+        file.write("\nVirus total:\n")
+        for key in virustotal:
+            if key == "error" and virustotal[key] !=None:
+                file.write(f"Error: {virustotal['error']}")
+                break
+            else:
+                file.write(virustotal[key])
+        
+        # abuseipdb scan
+        file.write("=" * 60)
+        file.write("\nAbuseipdb:\n")
+        for key in abuseipdb:
+            if key == "error" and abuseipdb[key] !=None:
+                file.write(f"Error: {abuseipdb['error']}")
+                break
+            else:
+                file.write(abuseipdb[key])
