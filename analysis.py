@@ -7,6 +7,8 @@ def load_config(config_file:str):
         config = json.load(file)
     return config
 
+
+
 def check_virustotal(ip:str,api:str):
     data = {
         "malicious": 0,
@@ -49,10 +51,46 @@ def check_virustotal(ip:str,api:str):
     except Exception as e:
         data["error"] = f"An error has occured: {e}"
         return data
-    
 
 
 
 
+
+def check_abuseipdb(ip:str,api:str):
+    data = {
+        "abuseConfidenceScore": 0,
+        "error": None
+    }
+
+    try:
+        url = f"https://api.abuseipdb.com/api/v2/check"
+        query_params = {
+            "ipAddress":ip,
+            "maxAgeInDays": "90"
+        }
+
+        query_headers = {
+            'Accept': 'application/json',
+            'Key': api
+        }
+
+        response = requests.get(url,headers=query_headers,params=query_params)
+
+        if response.status_code == 200:
+            raw_data = response.json()
+            data["abuseConfidenceScore"] = raw_data["data"]["abuseConfidenceScore"]
+            return data
+        
+        else:
+            data["error"] = f"Error:{response.status_code}"
+            return data
+
+    except requests.ConnectionError:
+        data["error"] = "Error: no internet connexion"
+        return data
+
+    except Exception as e:
+        data["error"] = f"An error has occured: {e}"
+        return data
 
 
