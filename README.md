@@ -31,7 +31,7 @@ Aegis-Scan runs nmap, gobuster, and nikto against a target, enriches the finding
 
 ## Installation
 ```bash
-git clone https://github.com/fraqve/Aegis-scaner.git
+git clone https://github.com/fraqve/Aegis-scan.git
 cd Aegis-scaner
 pip install -r requirements.txt
 # Add your API keys to config.json
@@ -56,7 +56,7 @@ python main.py --target 192.168.1.1 --wordlist /path/to/wordlist
 
 ## Project Structure
 ```
-Aegis-scaner/
+Aegis-scan/
 ├── main.py          # Entry point and CLI argument handling
 ├── scan.py          # Nmap, Gobuster, Nikto wrappers
 ├── analysis.py      # VirusTotal, AbuseIPDB, and Gemini integrations
