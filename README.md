@@ -1,69 +1,68 @@
-# Aegis-Scaner
-
-> A Python-based CLI security scanner for network reconnaissance and threat intelligence enrichment.
+# Aegis-Scan
+> A modular CLI security scanner combining active reconnaissance with threat intelligence enrichment and AI-powered analysis.
 
 ---
 
 ## Overview
 
-Aegis-Scaner is a modular command-line security tool built for blue team workflows. It combines active network scanning with threat intelligence APIs to help analysts quickly assess hosts, identify open services, and enrich findings with reputation data.
+Aegis-Scan runs nmap, gobuster, and nikto against a target, enriches the findings with VirusTotal and AbuseIPDB reputation data, then sends the full report to Google Gemini for structured security analysis. Output is saved to two files: a raw master report and an AI-generated assessment.
 
 ---
 
 ## Features
 
-- **Network scanning** — Host discovery and service detection via Nmap (`-sV`)
-- **Threat intelligence enrichment** — IP and file reputation lookups via VirusTotal and AbuseIPDB
-- **AI-assisted analysis** — Automated finding summarization via Google Gemini API
-- **Structured reporting** — Clean, readable output saved to report files
+- **Network scanning** — Service and version detection via Nmap (`-sV`)
+- **Directory enumeration** — Web path discovery via Gobuster
+- **Web vulnerability scanning** — Header and misconfiguration checks via Nikto
+- **Threat intelligence enrichment** — IP reputation via VirusTotal and AbuseIPDB
+- **AI-assisted analysis** — Structured security assessment via Google Gemini
 - **Modular architecture** — Separate modules for scanning, analysis, and reporting
 
 ---
 
-## Installation
-
-**Requirements**
+## Requirements
 
 - Python 3.8+
-- Nmap, Nikto, Gobuster installed on your system
+- Nmap, Nikto, Gobuster installed and available on PATH
 - API keys for VirusTotal, AbuseIPDB, and Google Gemini
-- Word list for gobuster (stored in /usr/share/seclists or provided with --wordlist flag) 
+- Wordlist for Gobuster (default: `/usr/share/seclists/common.txt`)
 
-**Steps**
+---
 
+## Installation
 ```bash
-# Clone the repository
 git clone https://github.com/fraqve/Aegis-scaner.git
 cd Aegis-scaner
-
-# Install dependencies
 pip install -r requirements.txt
-
-# Configure API keys edit config.json and add your API keys
+# Add your API keys to config.json
+```
 
 ---
 
 ## Usage
-
 ```bash
 # Basic scan
 python main.py --target 192.168.1.1
 
-# Provide the wordlist for gobuster default is /usr/share/seclists/common.txt
+# Custom wordlist
 python main.py --target 192.168.1.1 --wordlist /path/to/wordlist
 ```
+
+**Output:**
+- `report.txt` — Master report with all scan and enrichment data
+- `gemini_report.txt` — AI-generated security assessment
 
 ---
 
 ## Project Structure
-
 ```
 Aegis-scaner/
 ├── main.py          # Entry point and CLI argument handling
-├── scan.py          # Nmap wrapper and network scanning logic
-├── analysis.py      # Threat intelligence API integrations
-├── report.py        # Output formatting and report generation
-├── config.json      # API keys and configuration (not tracked)
+├── scan.py          # Nmap, Gobuster, Nikto wrappers
+├── analysis.py      # VirusTotal, AbuseIPDB, and Gemini integrations
+├── report.py        # Report generation and output formatting
+├── config.json      # API keys — not tracked by git
+├── config.json  # Template for API key configuration
 └── requirements.txt
 ```
 
@@ -72,15 +71,19 @@ Aegis-scaner/
 ## Tech Stack
 
 - **Python 3** — Core language
-- **subprocess (to use the tools)** — Nmap, Gobuster, Nikto
+- **subprocess** — Nmap, Gobuster, Nikto execution
 - **requests** — API communication
-- **VirusTotal API** — File and IP reputation
-- **AbuseIPDB API** — IP abuse confidence scoring
-- **Google Gemini API** — AI-powered finding analysis
+- **VirusTotal API v3** — IP reputation and verdict data
+- **AbuseIPDB API v2** — IP abuse confidence scoring
+- **Google Gemini API** — AI-powered security analysis
 
 ---
 
+## Status
 
+Phase 1 (scanning and reporting) complete. Phase 2 (threat intelligence enrichment and AI analysis) complete.
+
+---
 
 ## Disclaimer
 
