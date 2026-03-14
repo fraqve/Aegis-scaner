@@ -88,3 +88,16 @@ Phase 1 (scanning and reporting) complete. Phase 2 (threat intelligence enrichme
 ## Disclaimer
 
 This tool is intended for authorized security assessments and educational purposes only. Always obtain proper permission before scanning any network or system you do not own.
+
+---
+
+## Demo
+
+**Running the scanner:**
+![Running](Proof%20of%20work/project_running.png)
+
+**Master report output:**
+![Report](Proof%20of%20work/report.png)
+
+**Gemini AI analysis:**
+![Gemini Report](Proof%20of%20work/gemini_report.png)
